@@ -1,0 +1,16 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+xgboost
+catboost
+tensorflow
+optuna
+mlflow
+fastapi
+uvicorn[standard]
+python-dotenv
+joblib
+prometheus-client
+matplotlib
+seaborn
