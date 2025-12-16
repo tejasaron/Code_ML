@@ -24,3 +24,5 @@ models/*.joblib
 data/raw/
 data/processed/*.csv
 !data/processed/AEP_features.csv
+
+models/*_joblib
