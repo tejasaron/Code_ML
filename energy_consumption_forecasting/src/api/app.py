@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import pandas as pd
 
 
-from src.models import model_io
+from src.models.model_io import load_model
 
 app = FastAPI ( title = "Energy Consumption Forecasting API",
     description = "Predicts short term energy demand for smart grids",
@@ -11,7 +11,7 @@ app = FastAPI ( title = "Energy Consumption Forecasting API",
 
 # Load model at startup
 
-model = model_io.load_model('aep_random_forest')
+model = load_model('aep_random_forest')
 
 
 class EnergyFeatures(BaseModel):
