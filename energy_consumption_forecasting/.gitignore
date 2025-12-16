@@ -19,3 +19,8 @@ models/*.joblib
 
 # Logs
 *.log
+
+# Data
+data/raw/
+data/processed/*.csv
+!data/processed/AEP_features.csv
