@@ -16,6 +16,9 @@ def load_raw_data(data_dir):
 
         df = pd.read_csv(csv_file)  # 🔑 pass the variable, not a string
 
+        df.columns = [col.split("_", 1)[1] if col.endswith("_MW") else col 
+                      for col in df.columns ]
+
         # Required base column
         if "Datetime" not in df.columns:
              raise ValueError(
@@ -23,15 +26,7 @@ def load_raw_data(data_dir):
                  f"Found columns: {list(df.columns)}"
                  )
         
-        # Check if ANY MW column exists
-        mw_cols = [c for c in df.columns if c.endswith("_MW")]
-
-        if not mw_cols:
-            raise ValueError(
-                f"No MW columns found in {csv_file.name}. "
-                f"Found columns: {list(df.columns)}"
-                )
-        
+                
         df['Datetime'] = pd.to_datetime(df['Datetime'])
 
         df = df.sort_values('Datetime')
@@ -45,3 +40,4 @@ if __name__ == '__main__':
 
     for utility, df in data.items():
         print(f"{utility}: {df.shape}")
+        print(df.columns)
