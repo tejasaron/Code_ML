@@ -8,9 +8,11 @@ def load_raw_data(data_dir):
 
     data_dir = Path(data_dir) # 🔑 convert str → Path
 
-    dataframes = []
-
+    utility_data = {}
+    
     for csv_file in data_dir.glob('*.csv'):
+
+        utility_name = csv_file.stem.replace("_hourly", "")
 
         df = pd.read_csv(csv_file)  # 🔑 pass the variable, not a string
 
@@ -31,17 +33,15 @@ def load_raw_data(data_dir):
                 )
         
         df['Datetime'] = pd.to_datetime(df['Datetime'])
-        df['utility'] = csv_file.stem.replace('_hourly','') # type: ignore
 
-        dataframes.append(df)
+        df = df.sort_values('Datetime')
+        utility_data[utility_name] = df
 
-    merged_df = pd.concat(dataframes, ignore_index=True)
-    merged_df = merged_df.sort_values("Datetime")
-
-    return merged_df
+    return utility_data
 
 if __name__ == '__main__':
     folder_path = "D:/Code_ML/energy_consumption_forecasting/src/data/raw"
-    df = load_raw_data(folder_path)
-    print(df.head())
-    print(df.info())
+    data = load_raw_data(folder_path)
+
+    for utility, df in data.items():
+        print(f"{utility}: {df.shape}")
