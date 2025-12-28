@@ -47,6 +47,16 @@ def evaluate_model():
     print("\nClassification Report")
     print(classification_report(y_test, y_pred))
 
+    thresholds = np.arange(0.2, 0.8, 0.05)
+
+    print("\nThreshold Analysis:")
+    for t in thresholds:
+        y_pred_t = (y_proba >= t).astype(int)
+        cm_t = confusion_matrix(y_test, y_pred_t)
+        fn = cm_t[1, 0]
+        fp = cm_t[0, 1]
+        print(f"Threshold {t:.2f} | FN: {fn} | FP: {fp}")
+
 
 
 
