@@ -1,10 +1,4 @@
-import os
-import joblib
-from src.data.preprocess import prepare_data  
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_auc_score
+
 
 
 import sys
@@ -14,6 +8,15 @@ from pathlib import Path
 # If train.py is in src/models/, parents[2] takes you to the project root
 root_dir = Path(__file__).resolve().parents[2]
 sys.path.append(str(root_dir))  # Must be a string
+
+
+import os  # noqa: E402
+import joblib  # noqa: E402
+from src.data.preprocess import prepare_data  # noqa: E402
+from sklearn.model_selection import train_test_split  # noqa: E402
+from sklearn.pipeline import Pipeline  # noqa: E402
+from sklearn.linear_model import LogisticRegression  # noqa: E402
+from sklearn.metrics import roc_auc_score  # noqa: E402
 
  # modular architecture
 
@@ -52,3 +55,7 @@ roc_auc = roc_auc_score(y_test, y_pred_proba)
 print(f"ROC-AUC on test set: {roc_auc:.4f}")
 
 joblib.dump(model, os.path.join(ARTIFACTS_DIR, 'churn_model.pkl'))
+
+joblib.dump(model, os.path.join(ARTIFACTS_DIR, "model.joblib"))
+joblib.dump(X_test, os.path.join(ARTIFACTS_DIR, "X_test.joblib"))
+joblib.dump(y_test, os.path.join(ARTIFACTS_DIR, "y_test.joblib"))
