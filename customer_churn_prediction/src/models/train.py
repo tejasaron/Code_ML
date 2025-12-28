@@ -1,3 +1,12 @@
+import os
+import joblib
+from src.data.preprocess import prepare_data  
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import roc_auc_score
+
+
 import sys
 from pathlib import Path
 
@@ -5,15 +14,6 @@ from pathlib import Path
 # If train.py is in src/models/, parents[2] takes you to the project root
 root_dir = Path(__file__).resolve().parents[2]
 sys.path.append(str(root_dir))  # Must be a string
-
-# 2. NOW YOU CAN IMPORT YOUR MODULES
-import os
-import joblib
-from src.data.preprocess import prepare_data  # This will now work
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import roc_auc_score
 
  # modular architecture
 
