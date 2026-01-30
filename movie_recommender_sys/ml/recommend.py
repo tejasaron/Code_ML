@@ -10,7 +10,7 @@ def load_artifacts():
     
     return movies, similarity_matrix
 
-def recommend(movies_title, top_k=5):
+def recommend(movies_title, top_k=6):
     movies, similarity_matrix = load_artifacts()
 
     # Find index of selected movie
