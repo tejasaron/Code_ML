@@ -9,7 +9,7 @@ import streamlit as st
 import requests 
 from src.recommend import recommend 
 
-TMDB_API_KEY = "a93c7c8dd53536ec8e0db47478a139ce"
+TMDB_API_KEY = "a93c7c8dd53536ec8e0db47478a139c2"
 TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500" 
 
 def fetch_poster(movie_id):
