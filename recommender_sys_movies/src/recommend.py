@@ -1,5 +1,6 @@
 import pickle
 import numpy as np
+import random
 from src.config import  ARTIFACT_DIR
 
 
@@ -15,6 +16,10 @@ def load_artifacts():
         similarity_matrix = pickle.load(f)
     
     return movies, similarity_matrix
+
+def random_movie_list(k=5):
+    movies, _ = load_artifacts()
+    return movies.sample(n=k, replace=False).reset_index(drop=True)
 
 def recommend(movies_title, top_k=6):
     movies, similarity_matrix = load_artifacts()
