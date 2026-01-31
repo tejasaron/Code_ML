@@ -1,0 +1,55 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.env.*
+
+# =====================
+# Jupyter / Notebooks
+# =====================
+.ipynb_checkpoints/
+
+# =====================
+# Data (do NOT commit raw datasets)
+# =====================
+data/raw/
+data/processed/
+*.csv
+
+# =====================
+# Model artifacts
+# =====================
+models/*.pkl
+models/*.joblib
+
+# =====================
+# Streamlit
+# =====================
+.streamlit/
+.streamlit/secrets.toml
+
+# =====================
+# Logs & temp files
+# =====================
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDEs
+# =====================
+.vscode/
+.idea/
+
+# =====================
+# OS files
+# =====================
+.DS_Store
